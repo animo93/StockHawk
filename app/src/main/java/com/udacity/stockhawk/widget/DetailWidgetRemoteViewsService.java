@@ -71,7 +71,7 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
 
             @Override
             public RemoteViews getViewAt(int position) {
-                Timber.e("cursor data "+data.getCount());
+
                 dollarFormatWithPlus.setPositivePrefix("+$");
                 percentageFormat.setMaximumFractionDigits(2);
                 percentageFormat.setMinimumFractionDigits(2);
@@ -82,6 +82,7 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 }
                 RemoteViews views = new RemoteViews(getPackageName(),
                         R.layout.widget_list_item_quote);
+                Timber.e("cursor data "+data.getFloat(Contract.Quote.POSITION_PRICE));
                 views.setTextViewText(R.id.symbol,data.getString(Contract.Quote.POSITION_SYMBOL));
                 views.setTextViewText(R.id.price,dollarFormat.format(data.getFloat(Contract.Quote.POSITION_PRICE)));
 

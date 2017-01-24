@@ -17,6 +17,8 @@ import com.udacity.stockhawk.sync.QuoteSyncJob;
 import com.udacity.stockhawk.ui.DetailActivity;
 import com.udacity.stockhawk.ui.MainActivity;
 
+import timber.log.Timber;
+
 /**
  * Created by animo on 20/1/17.
  */
@@ -54,6 +56,7 @@ public class DetailWidgetProvider extends AppWidgetProvider{
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        Timber.e("inside onReceive");
         super.onReceive(context, intent);
         if (QuoteSyncJob.ACTION_DATA_UPDATED.equals(intent.getAction())) {
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);

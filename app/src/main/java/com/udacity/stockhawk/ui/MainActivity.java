@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onClick(String symbol) {
         Timber.d("Symbol clicked: %s", symbol);
         mUri=Contract.Quote.makeUriForStock(symbol);
-        Log.d("Uri ",Contract.Quote.makeUriForStock(symbol).toString());
+        //Log.d("Uri ",Contract.Quote.makeUriForStock(symbol).toString());
         Intent intent= new Intent(this,DetailActivity.class).putExtra("extra_text",mUri);
         startActivity(intent);
     }

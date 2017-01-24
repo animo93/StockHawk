@@ -72,10 +72,10 @@ public final class QuoteSyncJob {
             while (iterator.hasNext()) {
                 String symbol = iterator.next();
 
-                Timber.e(symbol);
+                //Timber.e(symbol);
                 Stock stock = quotes.get(symbol);
                 StockQuote quote = stock.getQuote();
-                Timber.e(quote.toString());
+                //Timber.e(quote.toString());
                 if(!(quote.getPrice()==null ||
                         quote.getChange()==null ||
                         quote.getChangeInPercent()==null)){
@@ -102,7 +102,7 @@ public final class QuoteSyncJob {
                     quoteCV.put(Contract.Quote.COLUMN_PERCENTAGE_CHANGE, percentChange);
                     quoteCV.put(Contract.Quote.COLUMN_ABSOLUTE_CHANGE, change);
 
-                    Timber.e("History is "+historyBuilder.toString());
+                    //Timber.e("History is "+historyBuilder.toString());
                     quoteCV.put(Contract.Quote.COLUMN_HISTORY, historyBuilder.toString());
 
                     quoteCVs.add(quoteCV);
