@@ -3,6 +3,7 @@ package com.udacity.stockhawk.widget;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Binder;
 import android.widget.AdapterView;
 import android.widget.RemoteViews;
@@ -82,7 +83,8 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 }
                 RemoteViews views = new RemoteViews(getPackageName(),
                         R.layout.widget_list_item_quote);
-                Timber.e("cursor data "+data.getFloat(Contract.Quote.POSITION_PRICE));
+                Timber.e(views.toString());
+                Timber.e("position "+ position +"cursor data "+data.getFloat(Contract.Quote.POSITION_PRICE));
                 views.setTextViewText(R.id.symbol,data.getString(Contract.Quote.POSITION_SYMBOL));
                 views.setTextViewText(R.id.price,dollarFormat.format(data.getFloat(Contract.Quote.POSITION_PRICE)));
 
@@ -90,11 +92,15 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 float rawAbsoluteChange = data.getFloat(Contract.Quote.POSITION_ABSOLUTE_CHANGE);
                 float percentageChange = data.getFloat(Contract.Quote.POSITION_PERCENTAGE_CHANGE);
 
+                Timber.e("change "+rawAbsoluteChange);
+
                 if (rawAbsoluteChange > 0) {
 
-                    views.setImageViewResource(R.id.change,R.drawable.percent_change_pill_green);
+                    //views.setImageViewResource(R.id.change,R.drawable.percent_change_pill_green);
+                    views.setTextColor(R.id.change,getResources().getColor(R.color.material_green_700));
                 } else {
-                    views.setImageViewResource(R.id.change,R.drawable.percent_change_pill_red);
+                    //views.setImageViewResource(R.id.change,R.drawable.percent_change_pill_red);
+                    views.setTextColor(R.id.change,getResources().getColor(R.color.material_red_700));
                 }
 
                 String change = dollarFormatWithPlus.format(rawAbsoluteChange);
@@ -107,6 +113,8 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                     views.setTextViewText(R.id.change,percentage);
                 }*/
                 views.setTextViewText(R.id.change,change);
+
+
 
                 return views;
             }
