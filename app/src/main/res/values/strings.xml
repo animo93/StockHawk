@@ -34,5 +34,6 @@
     <string name="title_activity_detail">Stock Detail</string>
     <string name="empty_forecast_list">No Stock info available</string>
     <string name="title_widget_detail">StockHawk Details</string>
+    <string name="add_stock">Add Stock</string>
 
 </resources>
